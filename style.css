@@ -1,49 +1,48 @@
-body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    background : url("Screenshot 2024-04-07 at 3 48 38 PM" src="https://github.com/Adi-gitX/leetcodescoreX/assets/159440749/92958d81-a144-4038-866c-3061b1ba1c90"); 
-    background-size: cover;
-    color: #ffffff;
-    text-align: center;
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: url("image2.png");
+            background-size: cover;
+            color: #ffffff;
+            text-align: center;
+        }
 
-}
+        .container {
+            max-width: 800px;
+            margin: 50px auto;
+        }
 
-.container {
-    max-width: 800px;
-    margin: 50px auto;
-}
+        .header {
+            text-align: center;
+        }
 
-.header {
-    text-align: center;
-}
+        .leaderboard {
+            background: rgba(0, 0, 0, 0.5);
+            border-radius: 8px;
+            overflow: hidden;
+        }
 
-.leaderboard {
-    background: rgba(0, 0, 0, 0.5);
-    border-radius: 8px;
-    overflow: hidden;
-}
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
 
-table {
-    width: 100%;
-    border-collapse: collapse;
-}
+        th, td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid #555;
+        }
 
-th, td {
-    padding: 12px 15px;
-    text-align: left;
-    border-bottom: 1px solid #555;
-}
+        th {
+            background-color: #111;
+            color: #fff;
+        }
 
-th {
-    background-color: #111;
-    color: #fff;
-}
+        tbody tr:nth-child(even) {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
 
-tbody tr:nth-child(even) {
-    background-color: rgba(255, 255, 255, 0.1);
-}
-
-tbody tr:hover {
-    background-color: rgba(255, 255, 255, 0.2);
-}
+        tbody tr:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
