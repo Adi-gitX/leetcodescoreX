@@ -1,11 +1,59 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>LeetCode Leaderboard</title>
-    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: url("image2.png");
+            background-size: cover;
+            color: #ffffff;
+            text-align: center;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 50px auto;
+        }
+
+        .header {
+            text-align: center;
+        }
+
+        .leaderboard {
+            background: rgba(0, 0, 0, 0.5);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid #555;
+        }
+
+        th {
+            background-color: #111;
+            color: #fff;
+        }
+
+        tbody tr:nth-child(even) {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        tbody tr:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+    </style>
 </head>
 <body>
     <div class="container">
@@ -25,6 +73,34 @@
             </table>
         </div>
     </div>
-    <script src="script.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const leaderboardBody = document.getElementById("leaderboard-body");
+
+            const usernames = [
+                "Raman-Luhach", "anuragk47", "akashg250804", "mdeepanshu", "saikiranbompelliwar0592","anujsingh31", "user9233qs", "nstXNikhil", "InfinityAditya07"
+                // Add the rest of the usernames here...
+            ];
+
+            // Function to generate a random score
+            function getRandomScore(min, max) {
+                return Math.floor(Math.random() * (max - min + 1)) + min;
+            }
+
+            // Populate the leaderboard with random scores for each user
+            usernames.forEach((username, index) => {
+                const rank = index + 1;
+                const score = getRandomScore(1, 100); // Generate a random score between 1 and 100
+
+                const row = document.createElement("tr");
+                row.innerHTML = `
+                    <td>${rank}</td>
+                    <td>${username}</td>
+                    <td>${score}</td>
+                `;
+                leaderboardBody.appendChild(row);
+            });
+        });
+    </script>
 </body>
 </html>
