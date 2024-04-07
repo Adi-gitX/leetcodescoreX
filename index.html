@@ -1,17 +1,133 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Leaderboard</title>
-    <link rel="stylesheet" href="style.css">
+    <title>LeetCode Leaderboard</title>
+    <style>
+        body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background : url("image2.png"); 
+    background-size: cover;
+    color: #ffffff;
+    text-align: center;
+
+}
+
+.container {
+    max-width: 800px;
+    margin: 50px auto;
+}
+
+.header {
+    text-align: center;
+}
+
+.leaderboard {
+    background: rgba(0, 0, 0, 0.5);
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th, td {
+    padding: 12px 15px;
+    text-align: left;
+    border-bottom: 1px solid #555;
+}
+
+th {
+    background-color: #111;
+    color: #fff;
+}
+
+tbody tr:nth-child(even) {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+tbody tr:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+    </style>
 </head>
 <body>
     <div class="container">
-        <input type="text" id="username" placeholder="Enter username">
-        <button onclick="fetchScores()">Get Scores</button>
-        <div id="leaderboard"></div>
+        <h1 class="header">LeetCode Leaderboard</h1>
+        <div class="leaderboard">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Rank</th>
+                        <th>Username</th>
+                        <th>Score</th>
+                    </tr>
+                </thead>
+                <tbody id="leaderboard-body">
+                    <!-- Leaderboard content will be dynamically added here -->
+                </tbody>
+            </table>
+        </div>
     </div>
-    <script src="script.js"></script>
+    <script>
+       document.addEventListener("DOMContentLoaded", function() {
+    const leaderboardBody = document.getElementById("leaderboard-body");
+
+    // Array of usernames to fetch data for
+    const usernames = [
+        "Raman-Luhach", "anuragk47", "akashg250804", "mdeepanshu", "saikiranbompelliwar0592",
+        "yashlunawat2005", "kezual_coding", "bhavani_shanker", "khatam_aadmi", "Meenaksh_0604",
+        "princesahoo659", "yashagrawal0110", "mk0904", "Second_By_Choice", "vivekananda_99",
+        "Zakurooooo", "manshusainishab", "Suyash_Parmar", "monurajj", "mannvaswani4",
+        "Piyushk12", "manu108", "insaneFTHL", "ayush_gupta_1309", "Inferior_Kush",
+        "karthikreddy0165", "Pranay0083", "shivansh_7394", "abhishek23csai", "Prerak_arya",
+        "anujsingh31", "user9233qs", "nstXNikhil", "InfinityAditya07", "ritikraj2425",
+        "shiven_16", "HarshalNerpagar_333", "Salonii_29", "vikasdevlpr9", "HimanshuRawat77",
+        "ajtkr200", "BHAVIHSYASAHAY", "Sourabhishere", "Agrapujya", "samyak2605",
+        "abhay_2901", "Janhvi290904", "Yashii_Gupta", "aryan2vb", "codic-yeeshu",
+        "Asmit_codes", "CodingWithVaishnav", "BinaryBard1337", "divyanshi_sachan", "visheshrao17",
+        "aman01k", "soniyamalviya", "siddharthashukla260804", "code_ron", "Eternal11",
+        "Aman1411", "tejmulmovin", "ProgramPro42", "Belal_Raza", "harsh_Gupta123564",
+        "Awert_", "aayushh_2607", "subhammahapatra004", "AnkushYadav1712", "shekharsamarth1574",
+        "Aviral_S", "mehak26_jain", "Sainathmeesala", "Astro__Dally", "aryanlovescode",
+        "prabhat15s", "seven_mark", "satyarth100x", "shashwat_0906", "sujanam_d",
+        "thxmbi", "Nilesh_NST", "viv_1205", "Udita_0707", "r69shabh",
+        "pintuSingh", "sanskar_singh23", "Sugat_17", "davinciCodeReader", "Omi112244", 
+        "amod_24", "Soumya_ranjan_143", "Manasa_0306", "Kalash Kumari Thakur", "Coming Soon", 
+        "Kartik Yadav"
+    ];
+
+    // Fetch data for each username and populate the leaderboard
+    usernames.forEach(username => {
+        fetch(`https://alfa-leetcode-api.onrender.com/${username}/solved`)
+            .then(response => {
+                if (response.ok) {
+                    return response.json();
+                } else {
+                    throw new Error(`Failed to fetch data for ${username}`);
+                }
+            })
+            .then(data => {
+                const row = document.createElement("tr");
+                row.innerHTML = `
+                    <td>${data.rank}</td>
+                    <td>${username}</td>
+                    <td>${data.score}</td>
+                `;
+                leaderboardBody.appendChild(row);
+            })
+            .catch(error => console.error(error));
+    });
+});
+
+ 
+    </script>
 </body>
 </html>
